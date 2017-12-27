@@ -1,7 +1,7 @@
 <?php
 
-return array(
-
+return [
+    
     /*
     |--------------------------------------------------------------------------
     | Upload dir
@@ -10,8 +10,8 @@ return array(
     | The dir where to store the images (relative from public)
     |
     */
-    'dir' => ['files'],
-
+    'dir'   => ['files'],
+    
     /*
     |--------------------------------------------------------------------------
     | Filesystem disks (Flysytem)
@@ -26,9 +26,9 @@ return array(
     |    ]
     */
     'disks' => [
-
+    
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Routes group config
@@ -37,12 +37,12 @@ return array(
     | The default group settings for the elFinder routes.
     |
     */
-
+    
     'route' => [
-        'prefix' => 'elfinder',
+        'prefix'     => 'elfinder',
         'middleware' => 'replace-this-with-your-middleware', //Set to null to disable middleware filter
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Access filter
@@ -51,9 +51,9 @@ return array(
     | Filter callback to check the files
     |
     */
-
+    
     'access' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Roots
@@ -63,9 +63,9 @@ return array(
     | If you want custom options, you can set your own roots below.
     |
     */
-
+    
     'roots' => null,
-
+    
     /*
     |--------------------------------------------------------------------------
     | Options
@@ -75,8 +75,8 @@ return array(
     | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1
     |
     */
-
-    'options' => array(),
+    
+    'options'      => [],
     
     /*
     |--------------------------------------------------------------------------
@@ -87,8 +87,8 @@ return array(
     | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1#root-options
     |
     */
-    'root_options' => array(
+    'root_options' => [
+    
+    ],
 
-    ),
-
-);
+];
