@@ -5,7 +5,7 @@ namespace Perederko\Laravel\Ext\Admin\ElFinder;
 use Encore\Admin\Extension;
 use Illuminate\Foundation\Application;
 use Encore\Admin\Admin;
-use Illuminate\Routing\Route;
+use Illuminate\Routing\Router;
 
 class ElFinder extends Extension
 {
@@ -47,7 +47,7 @@ class ElFinder extends Extension
     public static function registerRoutes()
     {
         parent::routes(
-            function (Route $router) {
+            function (Router $router) {
                 /* @var \Illuminate\Routing\Router $router */
                 /**@var \Illuminate\Config\Repository $config * */
                 $config = app('config');
@@ -56,7 +56,7 @@ class ElFinder extends Extension
                 $attributes['namespace'] = 'Perederko\Laravel\Ext\Admin\ElFinder';
                 
                 $router->group(
-                    $attributes, function (Route $router) {
+                    $attributes, function (Router $router) {
                     $router->get('/', ['as' => 'admin-elfinder.index', 'uses' => 'ElFinderController@index']);
                     $router->any(
                         'connector',

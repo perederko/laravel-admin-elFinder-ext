@@ -38,7 +38,7 @@ class ElFinderServiceProvider extends ServiceProvider
      * @param  Route $router
      * @return void
      */
-    public function boot(Route $router)
+    public function boot()
     {
         $viewPath = __DIR__ . '/../resources/views';
         $this->loadViewsFrom($viewPath, ElFinder::VIEW_NAMESPACE);
