@@ -35,7 +35,6 @@ class ElFinderServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  Route $router
      * @return void
      */
     public function boot()
