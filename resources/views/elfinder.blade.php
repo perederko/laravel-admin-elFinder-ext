@@ -18,6 +18,9 @@
     $().ready(function () {
         $('#elfinder').elfinder({
             // set your elFinder options here
+            height: "100%",
+            width: "100%",
+            heightBase: $('section .content'),
             @if($locale)
             lang: '{{ $locale }}', // locale
             @endif
