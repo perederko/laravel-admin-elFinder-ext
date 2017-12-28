@@ -2,7 +2,6 @@
 
 namespace Perederko\Laravel\Ext\Admin\ElFinder;
 
-use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 
 class ElFinderServiceProvider extends ServiceProvider
