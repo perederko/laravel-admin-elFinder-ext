@@ -4,6 +4,7 @@ namespace Perederko\Laravel\Ext\Admin\ElFinder;
 
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Application;
@@ -28,19 +29,11 @@ class ElFinderController extends Controller
     
     public function index()
     {
-        Admin::script();
-        Admin::css('//ajax.googleapis.com/ajax/lis/jquery/1.10.4/themes/smoothness');
-        Admin::css();
-        Admin::css();
-        Admin::css();
-        Admin::js('//ajax.googleapis.com/ajax/lis/jquery/1.10.4/jquery-ui.min.js');
-        Admin::js();
-        
         return Admin::content(
             function (Content $content) {
                 $content->header('ElFinder');
                 $content->description('File manager');
-                $content->body($this->getView('elfinder'));
+                $content->body($this->getView('elfinder')->render());
             }
         );
     }
@@ -62,7 +55,7 @@ class ElFinderController extends Controller
     
     public function popup($input_id)
     {
-        return $this->getView('standalonepopup',[compact('input_id')]);
+        return $this->getView('standalonepopup', [compact('input_id')]);
     }
     
     public function filePicker($input_id)
@@ -132,10 +125,17 @@ class ElFinderController extends Controller
         return $connector->getResponse();
     }
     
-    public function getView(string $name, array $with = [])
+    /**
+     * @param string $name
+     * @param array $with
+     * @return View
+     */
+    public function getView(string $name, array $with = []): View
     {
-        $view = $this->app['view'];
-        $view->make(ElFinder::VIEW_NAMESPACE . '::' . $name)->with($this->getViewVars());
+        /** @var \Illuminate\View\Factory $viewFactory */
+        $viewFactory = $this->app['view'];
+    
+        $view = $viewFactory->make(ElFinder::VIEW_NAMESPACE . '::' . $name)->with($this->getViewVars());
         
         if (!empty($with)) {
             foreach ($with as $arr) {
