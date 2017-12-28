@@ -41,17 +41,19 @@ class ElFinderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $viewPath = [
-            base_path('resources/views/vendor/laravel-admin-elfinder'),
-            __DIR__ . '/../resources/views'
-        ];
-        $this->loadViewsFrom($viewPath, ElFinder::VIEW_NAMESPACE);
-    
+        $viewPath = __DIR__ . '/../resources/views';
+        $this->loadViewsFrom(
+            [
+                base_path('resources/views/vendor/laravel-admin-elfinder'),
+                $viewPath
+            ],
+            ElFinder::VIEW_NAMESPACE
+        );
+        
         if ($this->app->runningInConsole()) {
             $this->publishes(
-                [
-                    $viewPath => base_path('resources/views/vendor/laravel-admin-elfinder'),
-                ], 'views'
+                [$viewPath => base_path('resources/views/vendor/laravel-admin-elfinder')],
+                'views'
             );
             
             $this->publishes(
