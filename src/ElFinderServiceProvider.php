@@ -20,10 +20,7 @@ class ElFinderServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $configPath = [
-            base_path('resources/views/vendor/laravel-admin-elfinder'),
-            __DIR__ . '/../resources/views'
-        ];
+        $configPath = __DIR__ . '/../config/admin-elfinder.php';
         
         $this->mergeConfigFrom($configPath, 'admin-elfinder');
         $this->publishes([$configPath => config_path('admin-elfinder.php')], 'config');
@@ -44,7 +41,10 @@ class ElFinderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $viewPath = __DIR__ . '/../resources/views';
+        $viewPath = [
+            base_path('resources/views/vendor/laravel-admin-elfinder'),
+            __DIR__ . '/../resources/views'
+        ];
         $this->loadViewsFrom($viewPath, ElFinder::VIEW_NAMESPACE);
     
         if ($this->app->runningInConsole()) {
