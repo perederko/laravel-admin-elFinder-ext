@@ -52,7 +52,6 @@ class ElFinder extends Extension
                 /**@var \Illuminate\Config\Repository $config * */
                 $config = app('config');
                 $attributes = $config->get('admin-elfinder.route', []);
-                $attributes['prefix'] = 'elfinder';
                 $attributes['namespace'] = 'Perederko\Laravel\Ext\Admin\ElFinder';
                 
                 $router->group(

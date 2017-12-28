@@ -40,7 +40,7 @@ return [
     
     'route' => [
         'prefix'     => 'elfinder',
-        'middleware' => 'replace-this-with-your-middleware', //Set to null to disable middleware filter
+        'middleware' => ['web', 'admin'], //Set to null to disable middleware filter
     ],
     
     /*
@@ -52,7 +52,7 @@ return [
     |
     */
     
-    'access' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
+    'access' => 'Perederko\Laravel\Ext\Admin\ElFinder\Elfinder::checkAccess',
     
     /*
     |--------------------------------------------------------------------------
